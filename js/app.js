@@ -5,7 +5,6 @@ import { agregarAlCarrito } from './carrito.js';
 document.addEventListener('DOMContentLoaded', async () => {
   const output = document.getElementById('output');
   
-  // 🔹 cargar productos iniciales
   const productos = await obtenerProductos();
 
   let productosMostrados = 0;
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  // 🔹 botón “Ver más”
   const verMasBtn = document.createElement('button');
   verMasBtn.id = 'ver-mas';
   verMasBtn.textContent = 'Ver más';
@@ -40,8 +38,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   output.after(verMasBtn);
 
   renderProductos();
-
-  // 🔹 opcional: cargar categorías para un select
   const categorias = await obtenerCategorias();
   console.log('Categorías disponibles:', categorias);
 });

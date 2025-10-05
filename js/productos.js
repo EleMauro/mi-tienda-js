@@ -1,11 +1,10 @@
-// productos.js
 
-// 🔹 Obtener todos los productos desde DummyJSON
+
+// OBTENER PROD
 export async function obtenerProductos(categoria = '') {
   try {
     let url = 'https://dummyjson.com/products';
     if (categoria) {
-      // Si pasás una categoría, DummyJSON tiene endpoint para categorías
       url = `https://dummyjson.com/products/category/${categoria}`;
     }
 
@@ -13,7 +12,6 @@ export async function obtenerProductos(categoria = '') {
     if (!res.ok) throw new Error('Error al obtener productos');
 
     const data = await res.json();
-    // DummyJSON devuelve { products: [...] }
     return data.products;
   } catch (error) {
     Swal.fire('Error', error.message, 'error');
@@ -21,12 +19,12 @@ export async function obtenerProductos(categoria = '') {
   }
 }
 
-// 🔹 Crear la tarjeta de producto
+//  TARJETA PROD
 export function crearTarjetaProducto(producto, callbackAgregar) {
   const card = document.createElement('div');
   card.className = 'card';
 
-  // usamos thumbnail como imagen principal
+  // IMG
   card.innerHTML = `
     <img src="${producto.thumbnail}" alt="${producto.title}">
     <h3>${producto.title}</h3>
@@ -34,7 +32,7 @@ export function crearTarjetaProducto(producto, callbackAgregar) {
     <button>Agregar al carrito</button>
   `;
 
-  // evento para agregar al carrito
+  // + CARRITO
   card.querySelector('button').addEventListener('click', () => {
     callbackAgregar(producto);
   });
@@ -42,13 +40,13 @@ export function crearTarjetaProducto(producto, callbackAgregar) {
   return card;
 }
 
-// 🔹 Opcional: Obtener categorías (para filtros)
+// 🔹FILTROS
 export async function obtenerCategorias() {
   try {
     const res = await fetch('https://dummyjson.com/products/categories');
     if (!res.ok) throw new Error('Error al obtener categorías');
 
-    return await res.json(); // array de strings
+    return await res.json();
   } catch (error) {
     Swal.fire('Error', error.message, 'error');
     return [];

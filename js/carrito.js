@@ -1,21 +1,20 @@
-// carrito.js
 
-// Estado del carrito (lo inicializamos desde localStorage si existe)
+
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-// Guardar carrito en localStorage
+// LOCALSTORAGE
 function guardarCarrito() {
   localStorage.setItem('carrito', JSON.stringify(carrito));
 }
 
-// Agregar producto y refrescar UI
+// + PRODUCTO
 export function agregarAlCarrito(producto) {
   carrito.push(producto);
   guardarCarrito();
   renderizarCarrito();
 }
 
-// Render de la lista + resumen (cantidad y total)
+// RESUMEN Y CANTIDAD
 function renderizarCarrito() {
   const lista = document.getElementById('lista-carrito');
   const resumen = document.getElementById('resumen-carrito');
@@ -30,7 +29,7 @@ function renderizarCarrito() {
     const li = document.createElement('li');
     li.className = 'item-carrito';
 
-    // miniatura
+
     const img = document.createElement('img');
     img.src = prod.thumbnail;
     img.alt = prod.title;
@@ -59,14 +58,14 @@ function renderizarCarrito() {
   resumen.textContent = `${carrito.length} ítems — Total: $${total.toFixed(2)}`;
 }
 
-// Eliminar un ítem por índice y refrescar
+// - PROD
 function eliminarDelCarrito(indice) {
   carrito.splice(indice, 1);
   guardarCarrito();
   renderizarCarrito();
 }
 
-// Botón "Vaciar carrito"
+// BOTON VVACIAR
 const btnVaciar = document.getElementById('vaciar-carrito');
 if (btnVaciar) {
   btnVaciar.addEventListener('click', () => {
@@ -76,5 +75,5 @@ if (btnVaciar) {
   });
 }
 
-// Render inicial (en caso de que haya datos en localStorage)
+// CARGA LOCALSTORAGE
 document.addEventListener('DOMContentLoaded', renderizarCarrito);
