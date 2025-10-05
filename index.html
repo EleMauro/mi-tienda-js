@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Tienda JS</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/styles.css" />
+
+  <!-- Librería SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- Módulo principal -->
+  <script type="module" src="./js/app.js" defer></script>
+</head>
+<body>
+  <header>
+    <h1>Mi Tienda</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Productos</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Filtro de categorías -->
+    <section class="filtros">
+      <label for="select-categorias">Filtrar por categoría:</label>
+      <select id="select-categorias">
+        <option value="">Todas</option>
+      </select>
+    </section>
+
+    <!-- Productos -->
+    <div id="output" class="productos"></div>
+
+    <!-- Carrito flotante lateral -->
+    <aside id="carrito" class="carrito">
+      <h2>Carrito</h2>
+      <p id="resumen-carrito">0 ítems — Total: $0</p>
+      <button id="vaciar-carrito">Vaciar carrito</button>
+      <ul id="lista-carrito"></ul>
+    </aside>
+  </main>
+</body>
+</html>
